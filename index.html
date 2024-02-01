@@ -1,0 +1,201 @@
+<html>
+<head>
+<title> Сотрінка
+</title>
+<meta http-equiv="Content-type"
+content="text/html;
+charset=utf-8">
+</head>
+<body>
+<body text = "blue"
+bgcolor = "white"> <!--  -->
+<center>
+<h1>Заголовок</h1>
+
+<a target = "_self" href = "index.html"
+title = "Ссылка"> Ссылка на эту страницу </a>
+<br>
+<img src = "images/photo.webp"
+alt = "Picture" width = "430" height = "300">
+</center>
+<br>
+<div align = "left">
+<i>Coursiv</i>
+</div>
+<div align = "left">
+<b>fatnachert</b>
+</div>
+<u>Podcherk</u>
+<i><b>tut 1 i 2</b></i>
+<div align = "right">
+<font size = "5" color = "red"> Червоний напис 5 шрифтом </font>
+</div>
+<br>
+<div align = "right">
+<font size = "5" color = "green">
+	<b>
+		<i>
+			<u> Текст підкреслений курсивом</u>
+		</i>
+	</b>
+</font>
+</div>
+<br>
+
+<ul>
+	<li> first element
+	<li> second element
+</ul>
+<ol>
+	<li> first element
+	<li> second element
+</ol>
+
+<div align = "left">
+<form name = "form1"
+action = "script/request.php"
+method = "post">
+<table>
+
+<tr>
+<td align = "right">Your name:</td>
+<td><input type ="text" 
+name = "firstname" 
+value = "Your name">
+</td>
+</tr>
+<br>
+<tr>
+<td align = "right">Your password:</td><td><input type = "password"
+name + "pass"
+value = "your password"></td></tr>
+<br>
+<tr>
+<td align = "right">Choose one of:</td>
+<td><select name = "choise">
+	<option value = "1"> option 1
+	<option value = "2"> option 2
+	<option value = "3"> option 3
+</select></td>
+</tr>
+<br>
+
+<tr><td align = "right">Choose the file for Loading:</td>
+<td><input type = "file" name = "path"></td></tr>
+<br>
+
+<tr>
+<td><input type = "button" name = "start" value = "Start"></td>
+
+<td><input type = "submit" value = "Send"></td>
+</tr>
+</table>
+</form>
+
+<table border = "1" width = "20%" height = "20%">
+	<tr>
+		<td colspan = "2" align = "center" >(1,1)</td>
+		<td rowspan = "2">(1,2)</td>
+	</tr>
+	<tr>
+		<td align = "right" valign = "top">(2,1)</td>
+		<td valign = "bottom">(2,2)</td>
+	</tr>
+</table>
+
+<title>Календар</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #currentDateTime {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Календар</h2>
+
+  <div id="currentDateTime"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Пн</th>
+        <th>Вт</th>
+        <th>Ср</th>
+        <th>Чт</th>
+        <th>Пт</th>
+        <th>Сб</th>
+        <th>Вс</th>
+      </tr>
+    </thead>
+    <tbody id="calendar-body">
+      <!-- Контент календаря будет добавлен здесь с использованием JavaScript -->
+    </tbody>
+  </table>
+
+  <script>
+    function generateCalendar() {
+      var calendarBody = document.getElementById("calendar-body");
+      var currentDate = new Date();
+      var year = currentDate.getFullYear();
+      var month = currentDate.getMonth();
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+      var firstDay = new Date(year, month, 1).getDay();
+
+      var dateCounter = 1;
+
+      for (var i = 0; i < 6; i++) {
+        var row = calendarBody.insertRow(i);
+
+        for (var j = 0; j < 7; j++) {
+          var cell = row.insertCell(j);
+
+          if (i === 0 && j < firstDay) {
+            // Пустые ячейки перед первым днем месяца
+            continue;
+          }
+
+          if (dateCounter > daysInMonth) {
+            // Завершаем, если достигли конца месяца
+            break;
+          }
+
+          cell.innerHTML = dateCounter;
+          dateCounter++;
+        }
+      }
+    }
+
+    function updateDateTime() {
+      var currentDateTimeElement = document.getElementById("currentDateTime");
+      var currentDateTime = new Date();
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+      var formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
+      currentDateTimeElement.textContent = "Час та дата: " + formattedDateTime;
+    }
+
+    generateCalendar();
+    updateDateTime();
+    setInterval(updateDateTime, 1000); // Обновлять время каждую секунду
+  </script>
+
+</div>		
+
+</body>
+</html>
